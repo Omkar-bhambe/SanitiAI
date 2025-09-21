@@ -1,0 +1,456 @@
+/* --- Global Styles & CSS Variables --- */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary-color: #10b981;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb;
+    --error-color: #ef4444;
+    --success-color: #22c55e;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    margin: 0;
+    padding-top: 80px; /* Add padding to prevent content from hiding behind fixed navbar */
+    box-sizing: border-box;
+}
+
+/* --- NEW: Navigation Bar --- */
+.navbar {
+    width: 100%;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 64px;
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+}
+.language-selector select {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* --- Main Layout Container --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto;
+    background: var(--bg-white);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.upload-section {
+    padding: 32px;
+    border-right: 1px solid var(--border-color);
+}
+.tagline {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 24px 0;
+    line-height: 1.5;
+}
+
+.results-section {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdfdff;
+}
+
+/* (The rest of your CSS from the previous step remains the same) */
+/* --- File Upload Area --- */
+.file-upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    background-color: var(--bg-light);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.file-upload-area:hover, .file-upload-area.dragover {
+    border-color: var(--primary-color);
+    background-color: #f0f0ff;
+}
+.upload-icon {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+}
+.file-upload-area p {
+    margin: 0 0 4px 0;
+    font-weight: 500;
+}
+.upload-hint {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- File List --- */
+#fileListContainer {
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-light);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.file-details {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.file-name {
+    font-weight: 500;
+}
+.file-size {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-left: 8px;
+}
+.remove-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: color 0.2s, background-color 0.2s;
+}
+.remove-btn:hover {
+    color: var(--error-color);
+    background-color: #fee2e2;
+}
+
+/* --- Submit Button --- */
+.button-container {
+    margin-top: 24px;
+}
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.btn-submit:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+}
+.btn-submit:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* --- Results Panel --- */
+.result-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+.result-state.active {
+    display: flex;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.placeholder-icon {
+    color: #d1d5db;
+}
+#placeholder h2 {
+    margin: 16px 0 8px 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+#placeholder p {
+    margin: 0;
+    max-width: 300px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Processing Loader */
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--primary-color);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#processing-state h2 {
+    margin-top: 16px;
+    font-size: 1.1rem;
+}
+
+/* Final Results Comparison */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.image-container h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-light);
+}
+#redacted-container {
+    border-left: 1px solid var(--border-color);
+    padding-left: 24px;
+}
+
+/* --- Status Messages --- */
+.status-message {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    width: 100%;
+    box-sizing: border-box;
+}
+.status-success {
+    background-color: #dcfce7;
+    color: #166534;
+}
+.status-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* --- Footer --- */
+.app-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    body {
+        padding-top: 64px;
+    }
+    .main-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 10px auto;
+    }
+    .upload-section {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    #redacted-container {
+        border-left: none;
+        padding-left: 0;
+    }
+    .navbar-title {
+        display: none; /* Hide title on small screens */
+    }
+}
+
+/* --- Add this to the end of your style.css file --- */
+
+.pii-container {
+    border-left: 1px solid var(--border-color);
+    padding-left: 24px;
+    text-align: left;
+}
+
+.pii-list-wrapper {
+    max-height: 300px; /* Limit height for long lists */
+    overflow-y: auto;  /* Add scrollbar if content overflows */
+    padding-right: 10px;
+}
+
+.pii-category {
+    margin-top: 12px;
+}
+
+.pii-category:first-child {
+    margin-top: 0;
+}
+
+.pii-category-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    text-transform: capitalize;
+}
+
+.pii-item {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    background-color: var(--bg-light);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+/* Responsive adjustment for the PII container */
+@media (max-width: 900px) {
+    .pii-container {
+        border-left: none;
+        padding-left: 0;
+        margin-top: 24px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 24px;
+    }
+}
+
+/* Add to end of style.css */
+.file-preview-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-preview-text {
+    background-color: #f3f4f6;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+/* Add to the end of your style.css */
+.text-container {
+    text-align: left;
+    height: 350px; /* Fixed height for alignment */
+    display: flex;
+    flex-direction: column;
+}
+
+.text-preview-box {
+    flex-grow: 1; /* Allow the box to fill the container */
+    background-color: #f3f4f6;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-y: auto;
+    color: var(--text-secondary);
+}
+
+#sanitized-text-container {
+    border-left: 1px solid var(--border-color);
+    padding-left: 24px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+    #sanitized-text-container {
+        border-left: none;
+        padding-left: 0;
+        margin-top: 24px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 24px;
+    }
+}
+
+/* Add to end of your style.css */
+.plugin-selector-container {
+    text-align: left;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+.plugin-selector {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+}

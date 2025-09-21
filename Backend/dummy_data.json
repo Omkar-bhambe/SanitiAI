@@ -1,0 +1,88 @@
+{
+  "dummy_profiles": [
+    {
+      "user_id": "usr_001",
+      "name": {
+        "first_name": "Priya",
+        "last_name": "Sharma"
+      },
+      "contact": {
+        "phone_number": "+91 98765-43210",
+        "email_address": "priya.sharma@example.com"
+      },
+      "identity": {
+        "date_of_birth": "1990-05-15",
+        "aadhaar_number": "1234 5678 9012",
+        "pan_number": "ABCDE1234F",
+        "passport_number": "Z9876543"
+      },
+      "financial": {
+        "credit_card_number": "4999-1111-2222-3333",
+        "card_expiry": "12/28",
+        "card_type": "VISA"
+      },
+      "address": {
+        "street": "123 fictitious Street, Apt 4B",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "pin_code": "411057"
+      }
+    },
+    {
+      "user_id": "usr_002",
+      "name": {
+        "first_name": "Amit",
+        "last_name": "Kumar"
+      },
+      "contact": {
+        "phone_number": "+91 99988-77665",
+        "email_address": "amit.kumar82@email-provider.net"
+      },
+      "identity": {
+        "date_of_birth": "1982-11-22",
+        "aadhaar_number": "9876 5432 1098",
+        "pan_number": "GHIJK5678L",
+        "passport_number": null
+      },
+      "financial": {
+        "credit_card_number": "5100-2233-4455-6677",
+        "card_expiry": "08/26",
+        "card_type": "Mastercard"
+      },
+      "address": {
+        "street": "456 Main Road, Tech Park",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "pin_code": "560001"
+      }
+    },
+    {
+      "user_id": "usr_003",
+      "name": {
+        "first_name": "Anjali",
+        "last_name": "Das"
+      },
+      "contact": {
+        "phone_number": "91-888-777-6665",
+        "email_address": "anjali.d@fakemail.org"
+      },
+      "identity": {
+        "date_of_birth": "1995-02-10",
+        "aadhaar_number": "2222 3333 4444",
+        "pan_number": null,
+        "passport_number": "K1234567"
+      },
+      "financial": {
+        "credit_card_number": "4123-4567-8901-2345",
+        "card_expiry": "05/27",
+        "card_type": "VISA"
+      },
+      "address": {
+        "street": "789 Lake View Apartments",
+        "city": "Kolkata",
+        "state": "West Bengal",
+        "pin_code": "700001"
+      }
+    }
+  ]
+}
