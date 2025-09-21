@@ -2,8 +2,6 @@
 
 **SanitiAI is a comprehensive, full-stack application designed to detect and sanitize Personally Identifiable Information (PII) from various document types. It features a modern web interface, a powerful backend, and an extensible plugin architecture for different analysis engines.**
 
-![SanitiAI Application Interface]
-
 ---
 
 ## 🚀 Key Features
