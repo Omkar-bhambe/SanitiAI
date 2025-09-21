@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+python-multipart
+flask
+flask-cors
+werkzeug
+
+spacy
+pytesseract
+Pillow
+PyMuPDF
+python-docx
+
+requests
+faker
+fpdf2
